@@ -8,7 +8,7 @@ interface WrapperProps {
 
 export const Wrapper: React.FC<WrapperProps> = ({ children }) => {
 	return (
-		<div className="w-96 bg-dark-primary-dark p-6">
+		<div className="w-[30rem] bg-dark-primary-dark p-6">
 			<div className="w-full flex justify-between mb-4">
 				<h1 className="text-xl font-semibold">ExploitUtils DEV</h1>
 				<Button>
