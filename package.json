@@ -16,13 +16,13 @@
 		"react-icons": "^4.6.0"
 	},
 	"devDependencies": {
-		"@types/semver": "^7.3.13",
 		"@plasmohq/prettier-plugin-sort-imports": "3.5.4",
 		"@tailwindcss/typography": "^0.5.8",
 		"@types/chrome": "0.0.202",
 		"@types/node": "18.11.9",
 		"@types/react": "18.0.25",
 		"@types/react-dom": "18.0.9",
+		"@types/semver": "^7.3.13",
 		"@typescript-eslint/eslint-plugin": "^5.43.0",
 		"@typescript-eslint/parser": "^5.43.0",
 		"ajv": "^8.11.2",
