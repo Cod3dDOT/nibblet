@@ -7,7 +7,10 @@ interface UrlHeaderProps {
 	hasExploit?: boolean;
 }
 
-export const UrlHeader: React.FC<UrlHeaderProps> = ({ url, hasExploit }) => {
+export const UrlHeader: React.FC<UrlHeaderProps> = ({
+	url,
+	hasExploit = undefined
+}) => {
 	return (
 		<div className="flex py-2 px-3">
 			{url ? (
@@ -18,7 +21,16 @@ export const UrlHeader: React.FC<UrlHeaderProps> = ({ url, hasExploit }) => {
 			) : (
 				<Skeleton className="w-full rounded-sm" />
 			)}
-			<div className="rounded-full bg-blue-600 h-6 w-6 ml-2 my-auto"></div>
+			<div
+				className={
+					'rounded-full h-6 w-6 ml-2 my-auto transition-colors duration-1000 ' +
+					(hasExploit !== undefined
+						? hasExploit === false
+							? 'bg-dark-red'
+							: 'bg-dark-green'
+						: 'bg-dark-blue')
+				}
+			></div>
 		</div>
 	);
 };
