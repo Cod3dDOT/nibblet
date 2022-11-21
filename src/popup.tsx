@@ -2,34 +2,39 @@ import './styles/global.css';
 import './styles/tailwind.css';
 import './styles/animations.css';
 
-import { useEffect, useState } from 'react';
-
+import { ExploitListWindow } from '~components/windows/exploit-list';
+import { LoadingWindow } from '~components/windows/loading';
 import { useExploits } from '~hooks/useExploits';
 
 import { UrlHeader } from './components/url-header';
 import { NothingFoundWindow } from './components/windows/nothing-found';
 import { Wrapper } from './components/wrapper';
 import { useTab } from './hooks/useTab';
-import type { IExploit } from '~lib/exploits/interfaces/IExploit';
 
 const IndexPopup = () => {
 	const tab = useTab();
-	const exploits = useExploits(tab, [
+	const { loaded, exploits } = useExploits(tab, [
 		new URL(
 			'https://exploitutils.000webhostapp.com/exploits/Dev/school-pack.json'
 		)
 	]);
 
-	let loaded = false;
-	useEffect(() => {
-		loaded = true;
-	}, [exploits]);
-
 	return (
 		<Wrapper>
-			<UrlHeader url={tab?.url ? new URL(tab.url) : undefined} />
+			<UrlHeader
+				url={tab?.url ? new URL(tab.url) : undefined}
+				hasExploit={loaded ? exploits.length > 0 : undefined}
+			/>
 			<hr className="border-dark-primary-dark" />
-			{exploits.length > 0 ? <div></div> : <NothingFoundWindow />}
+			{loaded ? (
+				exploits.length > 0 ? (
+					<ExploitListWindow exploits={exploits} />
+				) : (
+					<NothingFoundWindow />
+				)
+			) : (
+				<LoadingWindow />
+			)}
 		</Wrapper>
 	);
 };
