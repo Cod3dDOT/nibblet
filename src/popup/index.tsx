@@ -29,7 +29,10 @@ const IndexPopup = () => {
 			<hr className="border-dark-primary-dark border-2" />
 			{loaded ? (
 				exploits.length > 0 ? (
-					<ExploitListWindow exploits={exploits} />
+					<ExploitListWindow
+						exploits={exploits}
+						tabId={tab?.id || -1}
+					/>
 				) : (
 					<NothingFoundWindow />
 				)

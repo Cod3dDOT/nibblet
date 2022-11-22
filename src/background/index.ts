@@ -1,6 +1,8 @@
+import { table } from 'console';
+
 import type { IExploitPayload } from '~lib/exploits/interfaces';
 
-import { f } from './stage1';
+import { evalScript } from './content';
 
 async function getCurrentTab() {
 	const queryOptions = { active: true, lastFocusedWindow: true };
@@ -8,26 +10,26 @@ async function getCurrentTab() {
 	return tab;
 }
 
-const inject = async (url: string) => {
-	const tabId = (await getCurrentTab()).id;
-	if (!tabId) return;
-	return new Promise((resolve) => {
+const inject = async (tabId: number, url: string) => {
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignore
+	const [{ result }] = await new Promise((resolve) => {
 		chrome.scripting.executeScript(
 			{
-				target: {
-					tabId
-				},
-				world: 'MAIN', // MAIN in order to access the window object
-				func: f,
+				target: { tabId },
+				world: 'MAIN',
+				func: evalScript,
 				args: [url]
 			},
 			resolve
 		);
 	});
+	return result as IExploitPayload;
 };
 
 chrome.runtime.onMessage.addListener(async (data) => {
-	if (data.cmd === 'inject' && data.location) {
-		console.log(await inject(data.location));
+	if (data.cmd === 'inject' && data.location && data.tab) {
+		if (!data.tab.id) return;
+		return await inject(data.tab.id, data.location);
 	}
 });
