@@ -1,6 +1,6 @@
 import RiLock from 'react-icons/ri';
 
-import { Skeleton } from '../skeleton';
+import { Skeleton } from '../../../components/skeleton';
 
 interface UrlHeaderProps {
 	url?: URL;
