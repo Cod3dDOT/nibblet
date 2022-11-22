@@ -24,12 +24,15 @@ const inject = async (tabId: number, url: string) => {
 			resolve
 		);
 	});
-	return result as IExploitPayload;
+	return result;
 };
 
-chrome.runtime.onMessage.addListener(async (data) => {
-	if (data.cmd === 'inject' && data.location && data.tab) {
-		if (!data.tab.id) return;
-		return await inject(data.tab.id, data.location);
-	}
+chrome.runtime.onMessage.addListener((data, _sender, sendResponse) => {
+	(async () => {
+		if (data.cmd === 'inject' && data.location && data.tabId) {
+			const res = await inject(data.tabId, data.location);
+			sendResponse(res);
+		}
+	})();
+	return true;
 });
