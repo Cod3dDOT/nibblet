@@ -1,14 +1,4 @@
-import { table } from 'console';
-
-import type { IExploitPayload } from '~lib/exploits/interfaces';
-
 import { evalScript } from './content';
-
-async function getCurrentTab() {
-	const queryOptions = { active: true, lastFocusedWindow: true };
-	const [tab] = await chrome.tabs.query(queryOptions);
-	return tab;
-}
 
 const inject = async (tabId: number, url: string) => {
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment

@@ -1,3 +1,4 @@
 export const evalScript = async (url: string) => {
-	return eval(await (await fetch(url)).text());
+	const script = await (await fetch(url)).text();
+	return eval(script);
 };
