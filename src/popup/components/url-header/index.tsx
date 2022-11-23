@@ -1,16 +1,18 @@
 import RiLock from 'react-icons/ri';
 
+import { useTab } from '~popup/hooks';
+
 import { Skeleton } from '../../../components/skeleton';
 
 interface UrlHeaderProps {
-	url?: URL;
 	hasExploit?: boolean;
 }
 
 export const UrlHeader: React.FC<UrlHeaderProps> = ({
-	url,
 	hasExploit = undefined
 }) => {
+	const { tab } = useTab();
+	const url = tab?.url ? new URL(tab.url) : undefined;
 	return (
 		<div className="flex py-2 px-3">
 			{url ? (

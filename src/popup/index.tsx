@@ -11,9 +11,10 @@ import { useExploits, useTab } from '~popup/hooks';
 
 import { UrlHeader } from './components/url-header';
 import { Wrapper } from './components/wrapper';
+import { TabContextProvider } from './hooks/useTab';
 
 const IndexPopup = () => {
-	const tab = useTab();
+	const { tab } = useTab();
 	const { loaded, exploits } = useExploits(tab, [
 		new URL(
 			'https://exploitutils.000webhostapp.com/exploits/Dev/school-pack.json'
@@ -22,17 +23,11 @@ const IndexPopup = () => {
 
 	return (
 		<Wrapper>
-			<UrlHeader
-				url={tab?.url ? new URL(tab.url) : undefined}
-				hasExploit={loaded ? exploits.length > 0 : undefined}
-			/>
+			<UrlHeader hasExploit={loaded ? exploits.length > 0 : undefined} />
 			<hr className="border-dark-primary-dark border-2" />
 			{loaded ? (
 				exploits.length > 0 ? (
-					<ExploitListWindow
-						exploits={exploits}
-						tabId={tab?.id || -1}
-					/>
+					<ExploitListWindow exploits={exploits} />
 				) : (
 					<NothingFoundWindow />
 				)
@@ -43,4 +38,12 @@ const IndexPopup = () => {
 	);
 };
 
-export default IndexPopup;
+const App: React.FC = () => {
+	return (
+		<TabContextProvider>
+			<IndexPopup />
+		</TabContextProvider>
+	);
+};
+
+export default App;
