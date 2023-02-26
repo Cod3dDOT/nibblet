@@ -16,7 +16,7 @@ export const UrlHeader: React.FC<UrlHeaderProps> = ({
 	return (
 		<div className="flex py-2 px-3">
 			{url ? (
-				<div className="w-full">
+				<div className="flex-1">
 					<p className="text-dark-primary-lighter">{url.hostname}</p>
 					<p className="text-base">{url.pathname}</p>
 				</div>
@@ -25,7 +25,7 @@ export const UrlHeader: React.FC<UrlHeaderProps> = ({
 			)}
 			<div
 				className={
-					'rounded-full h-6 w-6 ml-2 my-auto transition-colors duration-1000 ' +
+					'rounded-full h-5 w-5 ml-2 my-auto transition-colors duration-1000 ' +
 					(hasExploit !== undefined
 						? hasExploit === false
 							? 'bg-dark-red'

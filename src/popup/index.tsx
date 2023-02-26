@@ -10,10 +10,10 @@ import {
 import { useExploits, useTab } from '~popup/hooks';
 
 import { UrlHeader } from './components/url-header';
-import { Wrapper } from './components/wrapper';
+import { Frame } from './components/wrapper';
 import { TabContextProvider } from './hooks/useTab';
 
-const IndexPopup = () => {
+const IndexPopup: React.FC = () => {
 	const { tab } = useTab();
 	const { loaded, exploits } = useExploits(tab, [
 		new URL(
@@ -22,7 +22,7 @@ const IndexPopup = () => {
 	]);
 
 	return (
-		<Wrapper>
+		<Frame>
 			<UrlHeader hasExploit={loaded ? exploits.length > 0 : undefined} />
 			<hr className="border-dark-primary-dark border-2" />
 			{loaded ? (
@@ -34,7 +34,7 @@ const IndexPopup = () => {
 			) : (
 				<LoadingWindow />
 			)}
-		</Wrapper>
+		</Frame>
 	);
 };
 

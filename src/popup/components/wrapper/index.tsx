@@ -6,7 +6,7 @@ interface WrapperProps {
 	children?: React.ReactNode;
 }
 
-export const Wrapper: React.FC<WrapperProps> = ({ children }) => {
+export const Frame: React.FC<WrapperProps> = ({ children }) => {
 	return (
 		<div className="w-[30rem] bg-dark-primary-dark p-6">
 			<div className="w-full flex justify-between mb-4">

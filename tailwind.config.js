@@ -21,9 +21,9 @@ module.exports = {
 						DEFAULT: '#888888'
 					},
 
-					red: '#dc2626',
-					blue: '#3b82f6',
-					green: '#16a34a'
+					red: '#E42444',
+					blue: '#3B82F6',
+					green: '#70D14C'
 				}
 			},
 			fontFamily: {
