@@ -1,33 +1,50 @@
+# ExploitUtils
+
+TLDR: An extension to inject third party js code, bypasses mv3 and sandboxing. Similar to Firemonkey/Violentmonkey, but worse.
+
+#### A little backstory:
+Several years ago, I transefered to an online school. Most of my studiyng, included testing, was conducted using their website. After poking around the api, I found out that the server was sending out full answers to the test without checking for the completion status. I wrote a script to automate the process of getting answers from the server, however, opening up devtools every time was not that user-friendly. So, I ventured on a journey of finding a better, more streamlined way of injecting js code into the website. This small extension is the product of my venture.
+
+#### How it works:
+Exploit - a js file to be injected.
+Pack - a list of exploits, united by common trait (for example, author, targets, etc).
+
+1. Fetches a pack of exploits from third party endpoint.
+  Example entry:
+  
+  ```json
+  [
+    {
+      "description": "Test answers",
+      "location": "https://host.com/tests.js",
+      "name": "Website.com test answers",
+      "type": "online",
+      "url": "https://maps.itstep.org/student/kingdom/map/*/material/*/*/show-task",
+      "version": "0.4",
+      "uid": "maps.itstep.org.tests"
+    },
+    { ... },
+    { ... }
+  ]
+  ```
+2. Checks the url of current tab against a wildcart specified in the `url` field using RegExp. Stores all valid exploits and shows them.
+3. When `inject` is pressed, injects a special template into sandboxed environment. The temaplate is used to fetch code, stored in the `location` field, and inject it into the target page using `eval()`
+4. Result of the script is passed back to the extension using events.
+
 This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with [`plasmo init`](https://www.npmjs.com/package/plasmo).
 
-## Getting Started
-
-First, run the development server:
+Run the development server:
 
 ```bash
 pnpm dev
-# or
-npm run dev
 ```
 
 Open your browser and load the appropriate development build. For example, if you are developing for the chrome browser, using manifest v3, use: `build/chrome-mv3-dev`.
 
-You can start editing the popup by modifying `popup.tsx`. It should auto-update as you make changes. To add an options page, simply add a `options.tsx` file to the root of the project, with a react component default exported. Likewise to add a content page, add a `content.ts` file to the root of the project, importing some module and do some logic, then reload the extension on your browser.
-
-For further guidance, [visit our Documentation](https://docs.plasmo.com/)
-
-## Making production build
+#### Making production build
 
 Run the following:
 
 ```bash
 pnpm build
-# or
-npm run build
 ```
-
-This should create a production bundle for your extension, ready to be zipped and published to the stores.
-
-## Submit to the webstores
-
-The easiest way to deploy your Plasmo extension is to use the built-in [bpp](https://bpp.browser.market) GitHub action. Prior to using this action however, make sure to build your extension and upload the first version to the store to establish the basic credentials. Then, simply follow [this setup instruction](https://docs.plasmo.com/workflows/submit) and you should be on your way for automated submission!
