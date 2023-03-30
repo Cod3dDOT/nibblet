@@ -1,6 +1,5 @@
+import { Button } from '@components/common';
 import { RiSettings4Fill } from 'react-icons/ri';
-
-import { Button } from '~components';
 
 interface WrapperProps {
 	children?: React.ReactNode;

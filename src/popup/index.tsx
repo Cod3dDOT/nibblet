@@ -2,16 +2,14 @@ import './styles/global.css';
 import './styles/tailwind.css';
 import './styles/animations.css';
 
+import { Frame } from '@components/frame';
+import { UrlHeader } from '@components/url-header';
 import {
 	ExploitListWindow,
 	LoadingWindow,
 	NothingFoundWindow
-} from '~popup/components/windows';
-import { useExploits, useTab } from '~popup/hooks';
-
-import { UrlHeader } from './components/url-header';
-import { Frame } from './components/wrapper';
-import { TabContextProvider } from './hooks/useTab';
+} from '@components/windows';
+import { TabContextProvider, useExploits, useTab } from '@hooks';
 
 const IndexPopup: React.FC = () => {
 	const { tab } = useTab();
@@ -23,11 +21,17 @@ const IndexPopup: React.FC = () => {
 
 	return (
 		<Frame>
-			<UrlHeader hasExploit={loaded ? exploits.length > 0 : undefined} />
+			<UrlHeader
+				hasExploit={loaded ? exploits.length > 0 : undefined}
+				url={tab?.url ? new URL(tab.url) : undefined}
+			/>
 			<hr className="border-dark-primary-dark border-2" />
 			{loaded ? (
-				exploits.length > 0 ? (
-					<ExploitListWindow exploits={exploits} />
+				exploits.length > 0 && tab ? (
+					<ExploitListWindow
+						exploits={exploits}
+						tabId={tab.id || 0}
+					/>
 				) : (
 					<NothingFoundWindow />
 				)

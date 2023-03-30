@@ -1,4 +1,4 @@
-import { Spinner } from '~components/spinner';
+import { Spinner } from '@components/common/spinner';
 
 export const LoadingWindow: React.FC = () => {
 	return (
