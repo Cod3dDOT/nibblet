@@ -44,6 +44,12 @@ Example entry:
 
 [OG Figma design](https://www.figma.com/file/70jNTrCzOYnj4WlBMJm87I/ExploitUtils?node-id=0-1&t=q3u7TPXvnY4nwoqX-0)
 
+### TODO:
+
+1. Use all-event approach OR store already injected exploits. Using `eval()` works, but if the same script is injected multiple times on the same page, an event trigger all of instances. Which, in turn, means that for 1 event the script is run multiple times.
+
+2. Add settings UI, specifically to allow for configurable hosts. Right now, the host is hardcoded.
+
 ### Plasmo
 
 This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with [`plasmo init`](https://www.npmjs.com/package/plasmo).
