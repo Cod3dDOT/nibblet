@@ -2,11 +2,15 @@
 
 TLDR: An extension to inject third party js code, bypasses mv3 and sandboxing. Similar to Firemonkey/Violentmonkey, but worse.
 
-#### A little backstory:
+### Disclaimer
+
+
+### A little backstory:
 Several years ago, I transefered to an online school. Most of my studiyng, included testing, was conducted using their website. After poking around the api, I found out that the server was sending out full answers to the test without checking for the completion status. I wrote a script to automate the process of getting answers from the server, however, opening up devtools every time was not that user-friendly. So, I ventured on a journey of finding a better, more streamlined way of injecting js code into the website. This small extension is the product of my venture.
 
-#### How it works:
+### How it works:
 Exploit - a js file to be injected.
+
 Pack - a list of exploits, united by common trait (for example, author, targets, etc).
 
 1. Fetches a pack of exploits from third party endpoint.
@@ -31,7 +35,10 @@ Pack - a list of exploits, united by common trait (for example, author, targets,
 3. When `inject` is pressed, injects a special template into sandboxed environment. The temaplate is used to fetch code, stored in the `location` field, and inject it into the target page using `eval()`
 4. Result of the script is passed back to the extension using events.
 
+### Plasmo
 This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with [`plasmo init`](https://www.npmjs.com/package/plasmo).
+
+The project was first written several years ago, then rewritten several times. However, as I became familiar with Next.js, I had an idea of rewriting the whole thing again using React. As it turns out, Plasmo was a perfect fit. It should be noted, that Plasmo is evolving rapidly, and some of the code in this repo is probably outdated.
 
 Run the development server:
 
