@@ -39,6 +39,10 @@ Pack - a list of exploits, united by common trait (for example, author, targets,
 
 4. Result of the script is passed back to the extension using events.
 
+### Preview
+
+[OG Figma design](https://www.figma.com/file/70jNTrCzOYnj4WlBMJm87I/ExploitUtils?node-id=0-1&t=q3u7TPXvnY4nwoqX-0)
+
 ### Plasmo
 This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with [`plasmo init`](https://www.npmjs.com/package/plasmo).
 
