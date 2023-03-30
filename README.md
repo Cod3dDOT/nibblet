@@ -6,14 +6,16 @@ TLDR: An extension to inject third party js code, bypasses mv3 and sandboxing. S
 
 
 ### A little backstory:
-Several years ago, I transefered to an online school. Most of my studiyng, included testing, was conducted using their website. After poking around the api, I found out that the server was sending out full answers to the test without checking for the completion status. I wrote a script to automate the process of getting answers from the server, however, opening up devtools every time was not that user-friendly. So, I ventured on a journey of finding a better, more streamlined way of injecting js code into the website. This small extension is the product of my venture.
+Several years ago, I transefered to an online school. Most of my studiyng, including testing, was conducted using their website. After poking around the api, I found out that the server was sending out answers to the test without checking for it's completion status. I wrote a script to automate the process of getting the answers, however, I did not want to open up devtools every time. So, I ventured on a journey of finding a better, more streamlined way of injecting js code into the website. This is the result - a small browser extension that fetches remote files and injects them in the DOM.
 
 ### How it works:
 Exploit - a js file to be injected.
 
 Pack - a list of exploits, united by common trait (for example, author, targets, etc).
 
-1. Fetches a pack of exploits from third party endpoint.
+
+1. Fetch a pack of exploits from third party endpoint.
+
   Example entry:
   
   ```json
@@ -31,8 +33,10 @@ Pack - a list of exploits, united by common trait (for example, author, targets,
     { ... }
   ]
   ```
-2. Checks the url of current tab against a wildcart specified in the `url` field using RegExp. Stores all valid exploits and shows them.
-3. When `inject` is pressed, injects a special template into sandboxed environment. The temaplate is used to fetch code, stored in the `location` field, and inject it into the target page using `eval()`
+2. Check the url of current tab against a wildcart specified in the `url` field using RegExp. Stores all valid exploits and shows them.
+
+3. When specific entry is selected and `inject` is pressed, injects a special template into a sandboxed environment. The template is used to fetch code, stored in the `location` field, and inject it into the target page using `eval()`.
+
 4. Result of the script is passed back to the extension using events.
 
 ### Plasmo
