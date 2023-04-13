@@ -1,3 +1,4 @@
+export { ErrorWindow } from './error';
 export { ExploitWindow } from './exploit';
 export { ExploitListWindow } from './exploit-list';
 export { LoadingWindow } from './loading';

@@ -1,10 +1,13 @@
 import React, { createContext, useEffect, useState } from 'react';
 
+import type { OperationState } from '~lib/state';
+
 interface TabContextProps {
 	tab?: chrome.tabs.Tab;
+	status: OperationState;
 }
 
-const TabContext = createContext<TabContextProps>({});
+const TabContext = createContext<TabContextProps>({ status: 'LOADING' });
 
 interface TabContextProviderProps {
 	children: React.ReactNode;
@@ -13,6 +16,7 @@ interface TabContextProviderProps {
 const TabContextProvider: React.FC<TabContextProviderProps> = ({
 	children
 }) => {
+	const [status, setStatus] = useState<OperationState>('LOADING');
 	const [tab, setTab] = useState<chrome.tabs.Tab>();
 
 	useEffect(() => {
@@ -22,25 +26,16 @@ const TabContextProvider: React.FC<TabContextProviderProps> = ({
 				lastFocusedWindow: true
 			});
 			setTab(tab);
-		};
-
-		const updateTab = (
-			_tabID: number,
-			_changeInfo: chrome.tabs.TabChangeInfo,
-			tab: chrome.tabs.Tab
-		) => {
-			setTab(tab);
+			setStatus('SUCCESS');
 		};
 
 		initTab();
-		chrome.tabs.onUpdated.addListener(updateTab);
-		return () => {
-			chrome.tabs.onUpdated.removeListener(updateTab);
-		};
 	}, []);
 
 	return (
-		<TabContext.Provider value={{ tab }}>{children}</TabContext.Provider>
+		<TabContext.Provider value={{ tab, status }}>
+			{children}
+		</TabContext.Provider>
 	);
 };
 
