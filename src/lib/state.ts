@@ -1,2 +1,2 @@
-export type OperationState = 'SUCCESS' | 'ERROR' | 'LOADING';
-export type AppState = Omit<OperationState, 'SUCCESS'> | 'FOUND' | 'NOTFOUND';
+export type OperationState = 'NONE' | 'SUCCESS' | 'ERROR' | 'LOADING';
+export type AppState = OperationState | 'NOTFOUND';

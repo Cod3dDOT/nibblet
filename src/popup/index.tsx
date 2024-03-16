@@ -10,40 +10,69 @@ import {
 	LoadingWindow,
 	NothingFoundWindow
 } from '@components/windows';
-import { TabContextProvider, useExploits, useTab } from '@hooks';
+import { TabContextProvider, useTab } from '@hooks/index';
 
 import type { AppState } from '~lib/state';
+import { useEffect, useState } from 'react';
+import { fetchExploits } from '~lib/exploits/fetchExploits';
+import type { IHost } from '~lib/exploits/interfaces/IHost';
 
 const IndexPopup: React.FC = () => {
 	const { tab, status: tabStatus } = useTab();
+	const [appState, setAppState] = useState<AppState>('NONE');
+	const [info, setInfo] = useState<string>();
+	const [exploits, setExploits] = useState<IHost[]>([]);
 
-	const { exploits, status: exploitStatus } = useExploits(tab, [
-		new URL(
-			'https://exploitutils.000webhostapp.com/exploits/Dev/school-pack.json'
-		)
-	]);
+	useEffect(() => {
+		async function fetchAll(endpoints: URL[], tabUrl: string) {
+			let errored = false;
+			for (const host of endpoints) {
+				const { result, message } = await fetchExploits(tabUrl, host);
 
-	const getAppState = (): AppState => {
-		if (tabStatus != 'SUCCESS') return tabStatus;
-		if (exploitStatus != 'SUCCESS') return exploitStatus;
-		if (exploitStatus == 'SUCCESS' && exploits.length > 0) {
-			return 'FOUND';
+				setInfo(message);
+
+				if (result.state == 'SUCCESS') {
+					setExploits(exploits.concat(result));
+					continue;
+				}
+
+				if (result.state == 'ERROR') errored = true;
+			}
+
+			if (exploits.length == 0) {
+				if (errored) setAppState('ERROR');
+				else setAppState('NOTFOUND');
+			}
 		}
-		return 'NOTFOUND';
-	};
+
+		if (exploits.length > 0) return;
+
+		if (!tab || !tab.url) {
+			if (tabStatus == 'LOADING') setAppState('LOADING');
+			else setAppState('ERROR');
+			return;
+		}
+
+		fetchAll([new URL(process.env.PLASMO_PUBLIC_HOST || '')], tab.url);
+	}, [tab]);
 
 	return (
 		<Frame>
-			<UrlHeader status={getAppState()} url={tab?.url} />
+			<UrlHeader status={appState} url={tab?.url} />
 			<hr className="border-dark-primary-dark border-2" />
-			{getAppState() == 'LOADING' ? (
+			{appState == 'LOADING' ? (
 				<LoadingWindow />
-			) : getAppState() == 'FOUND' ? (
-				<ExploitListWindow exploits={exploits} tabId={tab?.id || 0} />
-			) : getAppState() == 'NOTFOUND' ? (
+			) : appState == 'SUCCESS' ? (
+				<ExploitListWindow
+					exploits={exploits.flatMap((i) => i.exploits)}
+					tabId={tab?.id || 0}
+				/>
+			) : appState == 'NOTFOUND' ? (
 				<NothingFoundWindow />
 			) : (
-				<ErrorWindow message="Something went terribly wrong." />
+				<ErrorWindow
+					message={info || 'Something went terribly wrong.'}
+				/>
 			)}
 		</Frame>
 	);

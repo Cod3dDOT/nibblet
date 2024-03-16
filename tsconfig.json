@@ -2,6 +2,7 @@
 	"extends": "plasmo/templates/tsconfig.base",
 	"exclude": ["node_modules"],
 	"include": [
+		".plasmo/index.d.ts",
 		".plasmo/**/*",
 		"./**/*.ts",
 		"./**/*.tsx",
@@ -17,16 +18,10 @@
 		"paths": {
 			"~*": ["./src/*"],
 			"@components/*": ["./src/popup/components/*"],
-			"@components": ["./src/popup/components"],
 			"@assets/*": ["./assets/*"],
-			"@assets": ["./assets"],
 			"@styles/*": ["./src/popup/styles/*"],
-			"@styles": ["./src/popup/styles"],
-			"@hooks": ["./src/popup/hooks"],
 			"@hooks/*": ["./src/popup/hooks/*"],
-			"@lib": ["./src/lib/"],
-			"@lib/*": ["./src/lib/*"],
-			"@i18n": ["./i18n.json"]
+			"@lib/*": ["./src/lib/*"]
 		},
 		"baseUrl": "."
 	}
