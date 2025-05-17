@@ -2,7 +2,7 @@
 	"name": "exploit-utils",
 	"displayName": "Exploit utils",
 	"version": "0.1.0",
-    "license": "MIT",
+	"license": "MIT",
 	"description": "Let's exploit 'em all!",
 	"author": "cod3d",
 	"scripts": {
@@ -12,46 +12,43 @@
 		"compile-schema": "ajv compile -s src/lib/exploits/schemas/exploitSchema.json -o .src/lib/exploits/schemas/ExploitSchema.js"
 	},
 	"dependencies": {
-		"plasmo": "workspace:*",
-		"react": "18.2.0",
-		"react-dom": "18.2.0",
-		"react-icons": "^5.0.1"
+		"@tailwindcss/postcss": "^4.1.4",
+		"plasmo": "0.90.3",
+		"react": "19.1.0",
+		"react-dom": "19.1.0",
+		"react-icons": "^5.5.0"
 	},
 	"devDependencies": {
 		"@plasmohq/prettier-plugin-sort-imports": "4.0.1",
-		"@tailwindcss/typography": "^0.5.10",
-		"@types/chrome": "0.0.263",
-		"@types/node": "20.11.26",
-		"@types/react": "18.2.64",
-		"@types/react-dom": "18.2.21",
-		"@types/semver": "^7.5.8",
-		"@typescript-eslint/eslint-plugin": "^7.2.0",
-		"@typescript-eslint/parser": "^7.2.0",
-		"ajv": "^8.12.0",
-		"autoprefixer": "^10.4.18",
-		"eslint": "8.57.0",
-		"eslint-config-prettier": "^9.1.0",
-		"eslint-plugin-import": "^2.29.1",
-		"eslint-plugin-jsx-a11y": "^6.8.0",
-		"eslint-plugin-prettier": "^5.1.3",
-		"eslint-plugin-react": "^7.34.0",
-		"eslint-plugin-react-hooks": "^4.6.0",
-		"eslint-plugin-security": "^2.1.1",
-		"eslint-plugin-simple-import-sort": "^12.0.0",
-		"eslint-plugin-sonarjs": "^0.24.0",
-		"husky": "^9.0.11",
-		"postcss": "^8.4.35",
-		"prettier": "3.2.5",
-		"svgo": "^3.2.0",
-		"tailwindcss": "^3.4.1",
-		"typescript": "5.4.2"
+		"@tailwindcss/typography": "^0.5.16",
+		"@types/chrome": "0.0.317",
+		"@types/node": "22.15.2",
+		"@types/react": "19.1.2",
+		"@types/react-dom": "19.1.2",
+		"@types/semver": "^7.7.0",
+		"@typescript-eslint/eslint-plugin": "^8.31.0",
+		"@typescript-eslint/parser": "^8.31.0",
+		"ajv": "^8.17.1",
+		"autoprefixer": "^10.4.21",
+		"eslint": "9.25.1",
+		"eslint-config-prettier": "^10.1.2",
+		"eslint-plugin-import": "^2.31.0",
+		"eslint-plugin-jsx-a11y": "^6.10.2",
+		"eslint-plugin-prettier": "^5.2.6",
+		"eslint-plugin-react": "^7.37.5",
+		"eslint-plugin-react-hooks": "^5.2.0",
+		"eslint-plugin-security": "^3.0.1",
+		"eslint-plugin-simple-import-sort": "^12.1.1",
+		"eslint-plugin-sonarjs": "^3.0.2",
+		"husky": "^9.1.7",
+		"postcss": "^8.5.3",
+		"prettier": "3.5.3",
+		"svgo": "^3.3.2",
+		"tailwindcss": "^4.1.4",
+		"typescript": "5.8.3"
 	},
 	"manifest": {
-		"host_permissions": [
-			"https://*/*"
-		],
-		"permissions": [
-			"scripting"
-		]
+		"host_permissions": ["https://*/*"],
+		"permissions": ["scripting"]
 	}
 }
