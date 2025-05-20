@@ -1,15 +1,21 @@
+/*
+ * SPDX-FileCopyrightText: 2025 cod3ddo@proton.me
+ *
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
+@import "tailwindcss";
+
 :root {
-	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-	line-height: 1.5;
-	font-weight: 400;
-
 	color-scheme: light dark;
-	color: rgba(255, 255, 255, 0.87);
-	background-color: #242424;
+	width: 300px;
+}
 
-	font-synthesis: none;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-text-size-adjust: 100%;
+@theme {
+    --color-*: initial;
+    --color-foreground: rgb(18, 18, 18);
+    --color-background: rgb(230, 230, 230);
+    --color-container: rgb(242, 242, 242);
+    --color-accent-blue: rgb(78, 89, 207);
+    --color-accent-yellow: rgb(224, 191, 81);
 }

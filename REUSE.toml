@@ -1,0 +1,28 @@
+version = 1
+SPDX-PackageName = "Nibblet"
+SPDX-PackageSupplier = "https://github.com/cod3ddot/nibblet"
+
+[[annotations]]
+path = [
+    ".env",
+    ".env.example"
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2025 cod3ddot@proton.me"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = [
+    "bun.lock",
+    "biome.json",
+    "package.json",
+    "tsconfig.json"
+]
+precedence = "override"
+SPDX-FileCopyrightText = "2025 cod3ddot@proton.me"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = ["README.md", "CHANGELOG.md"]
+SPDX-FileCopyrightText = "2025 cod3ddot@proton.me"
+SPDX-License-Identifier = "CC-BY-SA-4.0"

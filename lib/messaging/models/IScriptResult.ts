@@ -4,4 +4,8 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-export default { extends: ["@commitlint/config-conventional"] };
+export interface IScriptResult {
+	success: boolean;
+	message: string;
+	data?: unknown;
+}

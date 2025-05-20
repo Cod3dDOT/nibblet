@@ -1,11 +1,11 @@
 {
-	"name": "wxt-solid-starter",
-	"description": "manifest.json description",
+	"name": "nibblet",
+	"description": "Web extension for remote script injection",
 	"private": true,
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "wxt -b edge",
+		"dev": "wxt",
 		"build": "wxt build",
 		"zip": "wxt zip",
 		"compile": "tsc --noEmit",
@@ -14,18 +14,19 @@
 		"lint:fix": "bunx biome check --write --unsafe"
 	},
 	"dependencies": {
+		"@tailwindcss/vite": "^4.1.7",
 		"@webext-core/messaging": "^2.2.0",
-		"solid-js": "^1.9.5",
-		"webext-bridge": "^6.0.1"
+		"solid-js": "^1.9.7",
+		"tailwindcss": "^4.1.7"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
-		"@commitlint/cli": "^19.8.0",
-		"@commitlint/config-conventional": "^19.8.0",
-		"@commitlint/prompt-cli": "^19.8.0",
+		"@commitlint/cli": "^19.8.1",
+		"@commitlint/config-conventional": "^19.8.1",
+		"@commitlint/prompt-cli": "^19.8.1",
 		"@wxt-dev/module-solid": "^1.1.3",
-		"lefthook": "^1.11.11",
+		"lefthook": "^1.11.13",
 		"typescript": "^5.8.3",
-		"wxt": "^0.20.5"
+		"wxt": "^0.20.6"
 	}
 }

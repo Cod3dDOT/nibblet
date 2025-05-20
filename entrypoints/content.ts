@@ -1,21 +1,25 @@
-import { onMessage } from "webext-bridge/content-script";
+/*
+ * SPDX-FileCopyrightText: 2025 cod3ddo@proton.me
+ *
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
 
-async function injectScript(source: string) {
-	const script = document.createElement("script");
-	script.innerHTML = source;
-	script.onload = () => script.remove();
-	(document.head ?? document.documentElement).append(script);
-}
+import { onExtensionMessage } from "@/lib/messaging/extension";
+import { sendWindowMessage } from "@/lib/messaging/window";
 
 export default defineContentScript({
 	matches: ["<all_urls>"],
 	async main() {
-		onMessage("INJECT", async ({ data }: { data: { scriptSrc: string } }) => {
-			const result = await injectScript(data.scriptSrc);
+		await injectScript("/main-world-injector.js", {
+			keepInDom: true
+		});
 
-			return {
-				data: result
-			};
+		onExtensionMessage("inject", async ({ data }) => {
+			return sendWindowMessage("inject", data);
+		});
+
+		onExtensionMessage("run", async ({ data }) => {
+			return sendWindowMessage("run", data);
 		});
 	}
 });
