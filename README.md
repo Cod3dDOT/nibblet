@@ -81,7 +81,12 @@ bun dev
 
 ## License
 
-This project strrives to be REUSE compliant.
+This project strives to be REUSE compliant.
+
+Generally:
+- Documentation is licensed under CC-BY-NC-SA-4.0
+- Code is licensed under AGPL-3.0-or-later
+- Config files are under CC0-1.0
 
 ```
     Nibblet: manifest V3 browser extension for remote script injection.
