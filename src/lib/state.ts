@@ -1,2 +1,8 @@
-export type OperationState = 'NONE' | 'SUCCESS' | 'ERROR' | 'LOADING';
-export type AppState = OperationState | 'NOTFOUND';
+/*
+ * SPDX-FileCopyrightText: 2025 cod3ddo@proton.me
+ *
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
+export type OperationState = "NONE" | "SUCCESS" | "ERROR" | "LOADING";
+export type AppState = OperationState | "NOTFOUND";

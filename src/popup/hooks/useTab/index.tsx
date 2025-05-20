@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: 2025 cod3ddo@proton.me
+ *
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
 import React, { createContext, useEffect, useState } from 'react';
 
 import type { OperationState } from '~lib/state';
