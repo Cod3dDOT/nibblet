@@ -9,12 +9,26 @@ SPDX-FileCopyrightText = "2025 cod3ddot@proton.me"
 SPDX-License-Identifier = "AGPL-3.0-or-later"
 
 [[annotations]]
-path = ["bun.lock", "biome.json", "package.json", "tsconfig.json"]
+path = [
+    "bun.lock",
+    "biome.json",
+    "package.json",
+    "tsconfig.json",
+    ".vscode/setting.json",
+]
 precedence = "override"
 SPDX-FileCopyrightText = "2025 cod3ddot@proton.me"
 SPDX-License-Identifier = "CC0-1.0"
 
 [[annotations]]
-path = ["README.md", "CHANGELOG.md"]
+path = ["README.md", "CHANGELOG.md", "public/sad-togepi.webp"]
 SPDX-FileCopyrightText = "2025 cod3ddot@proton.me"
 SPDX-License-Identifier = "CC-BY-NC-SA-4.0"
+
+[[annotations]]
+path = [
+    "public/fonts/geist-variable.woff2",
+    "public/fonts/geist-mono-variable.woff2",
+]
+SPDX-FileCopyrightText = "Copyright 2024 The Geist Project Authors (https://github.com/vercel/geist-font.git)"
+SPDX-License-Identifier = "OFL-1.1"

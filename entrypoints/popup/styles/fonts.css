@@ -1,0 +1,19 @@
+/*
+ * SPDX-FileCopyrightText: 2025 cod3ddot@proton.me
+ *
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
+@font-face {
+	font-family: "Geist";
+	src: url("/fonts/geist-variable.woff2") format("woff2-variations");
+	font-weight: 100 900;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeistMono";
+	src: url("/fonts/geist-mono-variable.woff2") format("woff2-variations");
+	font-weight: 100 900;
+	font-display: swap;
+}

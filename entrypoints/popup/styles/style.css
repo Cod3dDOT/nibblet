@@ -1,21 +1,44 @@
 /*
- * SPDX-FileCopyrightText: 2025 cod3ddo@proton.me
+ * SPDX-FileCopyrightText: 2025 cod3ddot@proton.me
  *
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
 @import "tailwindcss";
+@import "./fonts.css";
+
+@plugin "@kobalte/tailwindcss";
 
 :root {
 	color-scheme: light dark;
-	width: 300px;
+    width: 24rem;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
 }
 
 @theme {
+    --font-*: initial;
+    --font-sans: "Geist", sans-serif;
+    --font-mono: "Geist Mono", monospace;
+
     --color-*: initial;
     --color-foreground: rgb(18, 18, 18);
     --color-background: rgb(230, 230, 230);
     --color-container: rgb(242, 242, 242);
-    --color-accent-blue: rgb(78, 89, 207);
-    --color-accent-yellow: rgb(224, 191, 81);
+    --color-accent: rgb(78, 89, 207);
+}
+
+@media (prefers-color-scheme: dark) {
+    @theme {
+        --color-foreground: rgb(242, 242, 242);
+        --color-background: rgb(51, 51, 51);
+        --color-container: rgb(34, 34, 34);
+        --color-accent: rgb(224, 191, 81);
+    }
+}
+
+@utility image-rendering-pixelated {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
 }

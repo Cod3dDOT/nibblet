@@ -1,0 +1,13 @@
+{
+	"files.associations": {
+		"**/entrypoints/popup/styles/style.css": "tailwindcss"
+	},
+	"search.exclude": {
+		"**/.git": true,
+		"**/node_modules": true,
+		"**/.output": true,
+		"**/.wxt": true
+	},
+	"typescript.enablePromptUseWorkspaceTsdk": true,
+	"typescript.tsdk": "node_modules\\typescript\\lib"
+}
