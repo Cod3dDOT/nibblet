@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { cn } from "@/lib/cn";
+import { cn } from "@/lib/ui/cn";
 import { Root } from "@kobalte/core/button";
 
 export const Button = ({

@@ -10,8 +10,12 @@ import { sendWindowMessage } from "@/lib/messaging/window";
 export default defineContentScript({
 	matches: ["<all_urls>"],
 	async main() {
-		await injectScript("/main-world-injector.js", {
-			keepInDom: true
+		onExtensionMessage("prepare", async () => {
+			await injectScript("/main-world-injector.js", {
+				keepInDom: true
+			});
+
+			return sendWindowMessage("prepare", undefined);
 		});
 
 		onExtensionMessage("inject", async ({ data }) => {

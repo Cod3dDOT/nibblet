@@ -1,10 +1,3 @@
-/*
- * SPDX-FileCopyrightText: 2025 cod3ddot@proton.me
- *
- * SPDX-License-Identifier: AGPL-3.0-or-later
- */
-
-import { registryRepository } from "@/lib/repo";
 import { createSignal, createResource, Match, Switch } from "solid-js";
 import { LoadingScreen } from "./screens/loading";
 import { EmptyScreen } from "./screens/empty";
@@ -14,33 +7,24 @@ import { Nav } from "./components/nav";
 import { CurrentUrl } from "./components/currentUrl";
 
 import { version } from "@/package.json";
-import { getActiveTab } from "@/lib/activeTab";
-
-export interface IWebsiteInfo {
-	url: URL;
-	favIcon: string | undefined;
-}
+import { getActiveTab } from "@/lib/browser/activeTab";
+import { sendExtensionMessage } from "@/lib/messaging/extension";
 
 export default function Popup() {
 	const [screen, setScreen] = createSignal<"home" | "settings">("home");
 
-	const [websiteInfo, setWebsiteInfo] = createSignal<IWebsiteInfo | undefined>(
-		undefined
-	);
+	const [tab, setTab] = createSignal<Browser.tabs.Tab | undefined>(undefined);
 
 	onMount(async () => {
 		const tab = await getActiveTab();
 
 		if (!tab.url) return;
 
-		setWebsiteInfo({
-			url: new URL(tab.url),
-			favIcon: tab.favIconUrl
-		});
+		setTab(tab);
 	});
 
-	const [scriptsResource] = createResource(websiteInfo()?.url, async (u) => {
-		return await registryRepository.findScriptsForUrl(u.href);
+	const [scriptsResource] = createResource(tab()?.url, async (u) => {
+		return sendExtensionMessage("match", { url: new URL(u) });
 	});
 
 	const state = () => {
@@ -62,7 +46,7 @@ export default function Popup() {
 			<div class="flex h-60 flex-col">
 				<Switch>
 					<Match when={screen() === "home"}>
-						<CurrentUrl websiteInfo={websiteInfo} state={state} />
+						<CurrentUrl tab={tab} state={state} />
 						<Switch>
 							<Match when={state() === "loading"}>
 								<LoadingScreen />

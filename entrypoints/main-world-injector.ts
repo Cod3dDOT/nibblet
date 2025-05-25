@@ -26,6 +26,10 @@ function injectScript(url: string): IInjectResult {
 }
 
 export default defineUnlistedScript(async () => {
+	onWindowMessage("prepare", async () => {
+		return true;
+	});
+
 	onWindowMessage("inject", async ({ data }) => {
 		return injectScript(data.url);
 	});

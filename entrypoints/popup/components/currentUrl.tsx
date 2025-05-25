@@ -1,12 +1,5 @@
-/*
- * SPDX-FileCopyrightText: 2025 cod3ddot@proton.me
- *
- * SPDX-License-Identifier: AGPL-3.0-or-later
- */
-
-import type { IWebsiteInfo } from "../app";
 import { Skeleton } from "./skeleton";
-import { cn } from "@/lib/cn";
+import { cn } from "@/lib/ui/cn";
 import { EmptyIcon } from "./icons/empty";
 import { Image } from "@kobalte/core/image";
 import { GlobeIcon } from "./icons/globe";
@@ -14,11 +7,11 @@ import { ColorSwatch } from "@kobalte/core/color-swatch";
 import { parseColor } from "@kobalte/core/colors";
 
 interface CurrentUrlProps {
-	websiteInfo: () => IWebsiteInfo | undefined;
+	tab: () => Browser.tabs.Tab | undefined;
 	state: () => "loading" | "empty" | "matched";
 }
 
-export const CurrentUrl = ({ websiteInfo, state }: CurrentUrlProps) => {
+export const CurrentUrl = ({ tab, state }: CurrentUrlProps) => {
 	const color = window
 		.getComputedStyle(document.body)
 		.getPropertyValue("--color-accent");
@@ -30,7 +23,7 @@ export const CurrentUrl = ({ websiteInfo, state }: CurrentUrlProps) => {
 				class="!w-auto aspect-square rounded-full"
 			>
 				<Image class="flex h-full items-center justify-center bg-accent">
-					<Image.Img src={websiteInfo()?.favIcon} />
+					<Image.Img src={tab()?.favIconUrl} />
 					<Image.Fallback>
 						<GlobeIcon class="h-8 w-8 fill-container" />
 					</Image.Fallback>
@@ -41,7 +34,7 @@ export const CurrentUrl = ({ websiteInfo, state }: CurrentUrlProps) => {
 				visible={state() === "loading"}
 				class="!w-auto mx-2 inline-flex flex-1 items-center overflow-ellipsis whitespace-nowrap rounded bg-container px-2"
 			>
-				{websiteInfo()?.url.href || "Loading..."}
+				{tab()?.url || "Loading..."}
 			</Skeleton>
 
 			<Skeleton

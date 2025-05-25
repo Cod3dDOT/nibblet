@@ -4,12 +4,12 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-export interface IRegistryScript {
+export interface IRemoteScript {
 	id: string;
 	name: string;
 	version: string;
 	author: string;
 	description: string;
 	url: string;
-	matches: string;
+	matches: string[];
 }
