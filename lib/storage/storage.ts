@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: 2025 cod3ddot@proton.me
+ *
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
 import { storage } from "#imports";
 import type { ILocalRegistry } from "../data/interfaces/local/ILocalRegistry";
 import type { IScriptIndex } from "../data/interfaces/IScriptIndex";

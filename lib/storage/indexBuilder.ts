@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: 2025 cod3ddot@proton.me
+ *
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
 import type { ILocalScript } from "../data/interfaces/local/ILocalScript";
 import type { IRegexMatch } from "../data/interfaces/IRegexMatch";
 import type { IScriptIndex } from "../data/interfaces/IScriptIndex";

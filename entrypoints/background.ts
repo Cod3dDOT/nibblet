@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: 2025 cod3ddot@proton.me
+ *
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
 import { onExtensionMessage } from "@/lib/messaging/extension";
 
 export default defineBackground(async () => {
@@ -7,6 +13,7 @@ export default defineBackground(async () => {
 	// });
 
 	onExtensionMessage("match", async ({ data }) => {
-		return scriptMatcher.findMatches(data.url);
+		return [];
+		// return scriptMatcher.findMatches(data.url);
 	});
 });

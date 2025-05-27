@@ -14,7 +14,7 @@ path = [
     "biome.json",
     "package.json",
     "tsconfig.json",
-    ".vscode/setting.json",
+    ".vscode/settings.json",
 ]
 precedence = "override"
 SPDX-FileCopyrightText = "2025 cod3ddot@proton.me"

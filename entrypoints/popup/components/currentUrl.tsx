@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: 2025 cod3ddot@proton.me
+ *
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
 import { Skeleton } from "./skeleton";
 import { cn } from "@/lib/ui/cn";
 import { EmptyIcon } from "./icons/empty";
