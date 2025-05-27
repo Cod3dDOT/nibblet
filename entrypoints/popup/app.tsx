@@ -4,17 +4,17 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { createSignal, createResource, Match, Switch } from "solid-js";
-import { LoadingScreen } from "./screens/loading";
+import { Match, Switch, createResource, createSignal } from "solid-js";
+import { CurrentUrl } from "./components/currentUrl";
+import { Nav } from "./components/nav";
 import { EmptyScreen } from "./screens/empty";
+import { LoadingScreen } from "./screens/loading";
 import { MatchedScreen } from "./screens/matched";
 import { SettingsScreen } from "./screens/settings";
-import { Nav } from "./components/nav";
-import { CurrentUrl } from "./components/currentUrl";
 
-import { version } from "@/package.json";
 import { getActiveTab } from "@/lib/browser/activeTab";
 import { sendExtensionMessage } from "@/lib/messaging/extension";
+import { version } from "@/package.json";
 
 export default function Popup() {
 	const [screen, setScreen] = createSignal<"home" | "settings">("home");

@@ -4,13 +4,13 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { Skeleton } from "./skeleton";
 import { cn } from "@/lib/ui/cn";
-import { EmptyIcon } from "./icons/empty";
-import { Image } from "@kobalte/core/image";
-import { GlobeIcon } from "./icons/globe";
 import { ColorSwatch } from "@kobalte/core/color-swatch";
 import { parseColor } from "@kobalte/core/colors";
+import { Image } from "@kobalte/core/image";
+import { EmptyIcon } from "./icons/empty";
+import { GlobeIcon } from "./icons/globe";
+import { Skeleton } from "./skeleton";
 
 interface CurrentUrlProps {
 	tab: () => Browser.tabs.Tab | undefined;

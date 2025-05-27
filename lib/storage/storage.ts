@@ -5,8 +5,8 @@
  */
 
 import { storage } from "#imports";
-import type { ILocalRegistry } from "../data/interfaces/local/ILocalRegistry";
 import type { IScriptIndex } from "../data/interfaces/IScriptIndex";
+import type { ILocalRegistry } from "../data/interfaces/local/ILocalRegistry";
 
 const SCRIPT_KEY = "local:scripts";
 const REGISTRY_KEY = "local:registries";

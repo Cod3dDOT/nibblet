@@ -4,11 +4,11 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import type { ILocalScript } from "../data/interfaces/local/ILocalScript";
 import type { IRegexMatch } from "../data/interfaces/IRegexMatch";
 import type { IScriptIndex } from "../data/interfaces/IScriptIndex";
-import { convertToRegex, extractDomainPattern, isExactUrl } from "../regex";
+import type { ILocalScript } from "../data/interfaces/local/ILocalScript";
 import type { IRemoteScript } from "../data/interfaces/remote/IRemoteScript";
+import { convertToRegex, extractDomainPattern, isExactUrl } from "../regex";
 
 export class ScriptIndexBuilder {
 	private matchIndex: IScriptIndex;
